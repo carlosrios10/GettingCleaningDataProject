@@ -1,18 +1,22 @@
 #
+#This function change data set's labels to its camel case format. 
 #
-editingLabel <- function(x){
+editingLabel<- function(x){
     x<-gsub("\\(|\\)","",x)
-    x<-gsub("angle","angle_",x)
-    gsub("-|,","_",x)
+    s <- strsplit(x, "-")[[1]]
+    s<-paste(toupper(substring(s, 1, 1)), substring(s, 2),sep = "", collapse = "")
+    paste(tolower(substring(s, 1, 1)), substring(s, 2),sep = "", collapse = "")
     
 }
 #
+#This create a data frame whit average for each measure 
 #
-func<-function(x) {
+averageEachMeasure<-function(x) {
         la<-lapply(x[1:66],mean)
         data.frame(la)
 }
 #
+# This function change an activity number to its description.
 #
 getDescriptiveActivity <- function (activitis) {
         activitis[which(activitis=="1"),]<-"WALKING"
