@@ -1,5 +1,4 @@
-setwd("D:/coursera-gettingandcleaningdata/GettingCleaningDataProject")
-getwd()
+setwd("GettingCleaningDataProject")
 rm(list=ls())
 library("plyr")
 source("functions.R")
