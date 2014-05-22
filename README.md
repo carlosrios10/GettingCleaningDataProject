@@ -1,55 +1,82 @@
 GettingCleaningDataProject
 ==========================
 ## Synopsis
+This project contains two R scripts to process and get a tidy data set that will be used in subsequent analysis.
 
-Este proyecto contiene scripts para procesar y obtener un set de datos limpio que sera usado en posteriores analisis.
-El set de datos original contiene informacion obtenida de sensores de los Smartphones de 30 personas.
-Para saber mas acerca del set de datos original dirigirse al siguiente link: 
-http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones 
+Original data set contains information from sensors of smartphones 30 people. To know about this data set a full description is available at the site where the data was obtained: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones. 
 
-## Modulos
+## Modules
 
-El proyecto contiene dos R scrips:
-* run_analysis.R-> Scrip pricipal, realiza la secuencias de pasos necesarios para obtener el data set limpio.
-* fucntions.R->Scrip que contiene funciones utilizadas por run_analysis.R 
+The project contains two R scripts:
+* run_analysis.R : Main script performs the sequence of steps required to get the tidy data set.
+* functions.R : Script that contains functions used by run_analysis.R. 
 
-## Procesamiento
+## Process
+
 
 ### 1-Load Files
+In this step all the files used in processing load.
 
-
+Code example:
 ```{r}
 trainSetFile<-"../train/X_train.txt"
 trainSet<-read.table(trainSetFile,colClasses="numeric")
 ```
 ### 2-Merges the training and the test sets to create one data set.
+In this step I merge the training and the test set with function **rbind**, to get one data set with 10299 instances and 561 variables.
 
+Code Example:
+```{r}
+mergeDataSet<-rbind(trainSet,testSet)
+```
 
 ### 3-Extracts only the measurements on the mean and standard deviation for each measurement. 
+In this step I perfom these steps
+
+1. Search the variables representing the mean and standard deviation using the function **grepl ** in fetaures.txt file.
+2. From the data set created in step 2 to get the columns that represent these variables.
+
+Code Example:
+```{r}
+mergeDataSetMeanStd<-cbind(mergeDataSet[,grepl("mean()",features[[2]],fixed=T)],
+                           mergeDataSet[,grepl("std()",features[[2]],fixed=T)])
+```
 
 
 ### 4-Uses descriptive activity names to name the activities in the data set
+In this step I add the activity column and the subject column, each activity is assigned a descriptive name using the function **getDescriptiveActivity** .
 
-### 5-Appropriately labels the data set with descriptive activity names. 
+Code Example:
+```{r}
+activitis<-rbind(trainLabels,testLabels)
+activitis<-getDescriptiveActivity(activitis)
+subject<-rbind(trainSubject,testSubject)
+mergeDataSetMeanStd<-cbind(mergeDataSetMeanStd,activitis)
+mergeDataSetMeanStd<-cbind(mergeDataSetMeanStd,subject)
+```
+### 5-Appropriately labels the data set with descriptive activity names.
+In this step I label the data set with descriptive column names, I used CamelCase Format (http://en.wikipedia.org/wiki/CamelCase).
 
+Function **editingLabel** performs the conversion.
+
+Code Example:
+```{r}
+featuresMeanStd<-rbind(features[grepl("mean()",features[[2]],fixed=T),],
+                       features[grepl("std()",features[[2]],fixed=T),])
+featuresMeanStd<-sapply(as.list(featuresMeanStd[[2]]),editingLabel)
+names(mergeDataSetMeanStd)<-c(featuresMeanStd,"activity","subject")
+```
 ### 6-Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
+In this step I build the tidy data set with **ddply** function, this function is in **plyr** package.
 
+Code Example:
+```{r}
+finalTidyDataSet<-ddply(mergeDataSetMeanStd,.(activity,subject),averageEachMeasure)
+```
 ## Installation
+To run this project and get the tidy data set you must perform these steps below. 
 
-Provide code examples and explanations of how to get the project.
+1. Download project.
+2. Download original data set and unpack it into your working directory.
+3. Execute the file run_analysis.R.
 
-## API Reference
-
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
-
-## Tests
-
-Describe and show how to run the tests with code examples.
-
-## Contributors
-
-Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
-
-## License
-
-A short snippet describing the license (MIT, Apache, etc.)
