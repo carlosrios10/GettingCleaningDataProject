@@ -3,7 +3,20 @@ GettingCleaningDataProject
 ## Synopsis
 This project contains two R scripts to process and get a tidy data set that will be used in subsequent analysis.
 
-Original data set contains information from sensors of smartphones 30 people. To know about this data set a full description is available at the site where the data was obtained: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones. 
+Original data set contains information from sensors of smartphones.To know about this data set a full description is available at the site where the data was obtained: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones. 
+## Tidy Data Set Format
+The final data set that we want get will have this format.
+
+This final data set will have average of each variable for each activity and each subject. 
+
+Example:
+
+| activity   | subject | tBodyAccMeanX  |VarN   |...|
+| -----------|-------- | ---------------|-------|---|
+| LAYING     | 1       | 0.2215982      |mean   |...|
+| LAYING     | 2       | mean           |mean   |...|
+| ...        |...      |...             |...    |...|
+
 
 ## Modules
 
@@ -12,7 +25,7 @@ The project contains two R scripts:
 * functions.R : Script that contains functions used by run_analysis.R. 
 
 ## Process
-
+In this seccion I will describe the sequence of steps perform by run_analysis.R script.
 
 ### 1-Load Files
 In this step all the files used in processing load.
@@ -33,7 +46,7 @@ mergeDataSet<-rbind(trainSet,testSet)
 ### 3-Extracts only the measurements on the mean and standard deviation for each measurement. 
 In this step I perfom these steps
 
-1. Search the variables representing the mean and standard deviation using the function **grepl ** in fetaures.txt file.
+1. Search the variables representing the mean and standard deviation using the function **grepl** in fetaures.txt file.
 2. From the data set created in step 2 to get the columns that represent these variables.
 
 Code Example:
@@ -77,6 +90,8 @@ finalTidyDataSet<-ddply(mergeDataSetMeanStd,.(activity,subject),averageEachMeasu
 To run this project and get the tidy data set you must perform these steps below. 
 
 1. Download project.
-2. Download original data set and unpack it into your working directory.
+2. Download [original data set][id] and unpack it into your working directory.(without change folder name)
 3. Execute the file run_analysis.R.
 
+
+[id]:https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip

@@ -1,4 +1,6 @@
-setwd("GettingCleaningDataProject")
+if(!file.exists("./UCI HAR Dataset")){
+        stop("Please Download original data 
+             set and unpack it into your working directory.")}
 rm(list=ls())
 library("plyr")
 source("functions.R")
@@ -47,4 +49,6 @@ finalTidyDataSet<-ddply(mergeDataSetMeanStd,.(activity,subject),averageEachMeasu
 write.table(finalTidyDataSet, "finalTidyDataSet.txt", sep="\t",row.names =FALSE)
 tidy<-read.table("finalTidyDataSet.txt",header=T)
 View(tidy)
+
+
 
