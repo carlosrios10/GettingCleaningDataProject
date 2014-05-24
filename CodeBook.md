@@ -1,5 +1,61 @@
 CodeBooK For Getting Cleaning Data Project
 =========================
+
+Final tidy data set have 180 observation and 68 variables.
+Variables are describing below.
+
+### Meaning of abbreviations:
+
+* __t:__ time.
+* __Acc:__ acceleration.
+* __Gyro:__ gyroscope.
+* __Mag:__ magnitude.
+* __f:__ frequency domain signals.
+* __XYZ:__ means that there are 3 variables.
+
+### Following table show meaning of variables
+
+|VARIABLES        |	DESCRIPTION	|TYPE		|	VALUES	|
+|---------	|-------		|--------	|-------	|
+|activity	|	Activities	|	categorical|WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING	|
+|subject	|	Person performed six activities	|	integer	|	1 to 30	|
+|tBodyAccMeanXYZ 	|	Mean value to 3-axial signals for body acceleration 	|	numerical	|		|
+|tBodyAccStdXYZ	|	Standard deviation value to 3-axial signals for body acceleration 	|	numerical	|		|
+|tGravityAccMeanXYZ	|	Mean value to 3-axial signals for gravity acceleration 	|	numerical	|		|
+|tGravityAccStdXYZ	|	Standard deviation value to 3-axial signals for gravity acceleration 	|	numerical	|		|
+|tBodyAccJerkMeanXYZ	|	Mean value to 3-axial signals for Jerk acceleration 	|	numerical	|		|
+|tBodyAccJerkStdXYZ	|	Standard deviation value to 3-axial signals for Jerk acceleration 	|	numerical	|		|
+|tBodyGyroMeanXYZ	|	Mean value to 3-axial signals for body gyroscope 	|	numerical	|		|
+|tBodyGyroStdXYZ	|	Standard deviation value to 3-axial signals for body gyroscope 	|	numerical	|		|
+|tBodyGyroJerkMeanXYZ	|	Mean value to 3-axial Jerk signals for body gyroscope 	|	numerical	|		|
+|tBodyGyroJerkStdXYZ	|	Standard deviation value to 3-axial Jerk signals for body gyroscope 	|	numerical	|		|
+|tBodyAccMagMean	|	Mean value to  magnitude to signals for body aceleration 	|	numerical	|		|
+|tBodyAccMagStd	|	Standard deviation value to  magnitude to signals for body aceleration 	|	numerical	|		|
+|tGravityAccMagMean	|	Mean value to  magnitude to signals for gravity aceleration 	|	numerical	|		|
+|tGravityAccMagStd	|	Standard deviation value to  magnitude to signals for gravity aceleration 	|	numerical	|		|
+|tBodyAccJerkMagMean	|	Mean value to  magnitude to Jerk signals for body aceleration 	|	numerical	|		|
+|tBodyAccJerkMagStd	|	Standard deviation value to  magnitude to Jerk signals for body aceleration 	|	numerical	|		|
+|tBodyGyroMagMean	|	.	|	numerical	|		|
+|tBodyGyroMagStd	|	.	|	numerical	|		|
+|tBodyGyroJerkMagMean	|	.	|	numerical	|		|
+|tBodyGyroJerkMagStd	|	.	|	numerical	|		|
+|fBodyAccMeanXYZ	|	.	|	numerical	|		|
+|fBodyAccStdXYZ	|	.	|	numerical	|		|
+|fBodyAccJerkMeanXYZ	|	.	|	numerical	|		|
+|fBodyAccJerkStdXYZ	|	.	|	numerical	|		|
+|fBodyGyroMeanXYZ	|	.	|	numerical	|		|
+|fBodyGyroStdXYZ	|	.	|	numerical	|		|
+|fBodyAccMagMean	|	.	|	numerical	|		|
+|fBodyAccMagStd	|	.	|	numerical	|		|
+|fBodyAccJerkMagMean	|	.	|	numerical	|		|
+|fBodyAccJerkMagStd	|	.	|	numerical	|		|
+|fBodyGyroMagMean	|	.	|	numerical	|		|
+|fBodyGyroMagStd	|	.	|	numerical	|		|
+|fBodyGyroJerkMagMean	|	.	|	numerical	|		|
+|fBodyGyroJerkMagStd	|	.	|	numerical	|		|
+
+**Finally all variables are these:**
+
 1. activity
 2. subject
 3. tBodyAccMeanX
