@@ -1,7 +1,11 @@
 CodeBooK For Getting Cleaning Data Project
 =========================
+To this project I took the original data set from [here][id] and selected some variables.
+These variabels selected are mean and standard deviation for some signals which was taking from acelerometer and gyroscope of smart phones.
 
-Final tidy data set have 180 observation and 68 variables.
+[id]:http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones.
+
+This final data set has average of each variable for each activity and each subject and it has 180 observation and 68 variables.
 Variables are describing below.
 
 ### Meaning of abbreviations:
@@ -124,3 +128,5 @@ Variables are describing below.
 66. fBodyBodyAccJerkMagStd
 67. fBodyBodyGyroMagStd
 68. fBodyBodyGyroJerkMagStd
+
+**A full description for original data set is available at the site where the data was obtained: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones.** 
