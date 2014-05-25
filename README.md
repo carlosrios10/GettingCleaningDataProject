@@ -47,7 +47,7 @@ mergeDataSet<-rbind(trainSet,testSet)
 In this step I perfom these steps
 
 1. Search the variables representing the mean and standard deviation using the function **grepl** in fetaures.txt file.
-2. From the data set created in step 2 to get the columns that represent these variables.
+2. From the data set created in step 2, to get the columns that represent these variables.
 
 Code Example:
 ```{r}
@@ -90,9 +90,9 @@ finalTidyDataSet<-ddply(mergeDataSetMeanStd,.(activity,subject),averageEachMeasu
 
 These functions are used by run_analysis.R.
 
-The functions.R file contain these functions.
+The functions.R file contains these functions.
 
-*This function change data set's labels to its camel case format.*
+*This function changes data set's labels to its camel case format.*
 ```{r}
 editingLabel<- function(x){
     x<-gsub("\\(|\\)","",x)
@@ -103,7 +103,7 @@ editingLabel<- function(x){
 }
 ```
 
-*This create a data frame whit average for each measure.*
+*This function creates a data frame whit average for each measure.*
 
 ```{r}
 averageEachMeasure<-function(x) {
@@ -111,7 +111,7 @@ averageEachMeasure<-function(x) {
         data.frame(la)
 }
 ```
-*This function change an activity number to its description.*
+*This function changes an activity number to its description.*
 
 ```{r}
 getDescriptiveActivity <- function (activitis) {
